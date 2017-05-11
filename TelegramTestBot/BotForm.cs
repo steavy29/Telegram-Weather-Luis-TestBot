@@ -46,7 +46,7 @@ namespace TelegramTestBot
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message);
+                MessageBox.Show(this, $"{ex.Message}\nTry to write to bot from your Telegram account first.");
             }
         }
     }
