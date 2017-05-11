@@ -2,9 +2,12 @@ using System;
 
 namespace TelegramTestBot
 {
+    /// <summary>
+    /// https://openweathermap.org/api
+    /// </summary>
     class WeatherService
     {
-        private static readonly string apiKey = "6dc8f7110995d788c13064dd8591785f";
+        private static readonly string apiKey = "74d41e808242913d777779a206ec0c5f";
 
         public WeatherService()
         {
