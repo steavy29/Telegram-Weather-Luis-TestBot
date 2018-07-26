@@ -5,6 +5,8 @@ namespace TelegramTestBot
 {
     public partial class BotForm : Form
     {
+        private static WeatherBot weatherBot;
+
         public BotForm()
         {
             InitializeComponent();
@@ -12,10 +14,12 @@ namespace TelegramTestBot
 
         protected override void OnLoad(EventArgs e)
         {
-            BotThread.OnTextMessage += BotThreadOnTextMessage;
+            weatherBot = new WeatherBot();
+
+            weatherBot.TextMessage += BotThreadTextMessage;
         }
 
-        private void BotThreadOnTextMessage(object sender, string e)
+        private void BotThreadTextMessage(object sender, string e)
         {
             if (InvokeRequired)
             {
@@ -39,7 +43,7 @@ namespace TelegramTestBot
 
             try
             {
-                await BotThread.SendMessageToLastSender(sendMessageTextBox.Text);
+                await weatherBot.SendMessageToLastSender(sendMessageTextBox.Text);
 
                 InsertMessage($"me: {sendMessageTextBox.Text}");
                 sendMessageTextBox.Text = string.Empty;
